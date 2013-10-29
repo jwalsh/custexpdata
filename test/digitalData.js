@@ -12,7 +12,7 @@ window.digitalData = {
     searchTerm: "",
     searchResult: 0,
     destinationURL: window.location.href,
-    referringUrl: document.referrer
+    referringUrl: document.referrer,
     attributes: { // TODO: Drop init caps
       SysEnv: "", // Is this a mobile site or page view? 
       Variant: "",
@@ -28,7 +28,7 @@ window.digitalData = {
       productURL: "",
       // Optional
       manufacturer: "",
-      sku: ""
+      sku: "",
       size: ""
     },
     productCategory: {},
@@ -52,11 +52,41 @@ window.digitalData = {
   },
   transaction: {
     transactionID: "",
-    profileID: ""
-    profileID.address
-  }
-  event
-  component
-  user
-  version 
-}
+    profileID: "",
+    profileID: {
+      address: ""
+    }
+  },
+  event: {},
+  
+  component: {},
+  user: {},
+  version: {}
+};
+
+console.log(digitalData);
+
+
+$('#user').on('click', function() { 
+  $(document).trigger('digitalData', digitalData.user); 
+  $('<div>').html('user').appendTo($('body'));
+});
+
+
+$('#product').on('click', function() { 
+  $(document).trigger('digitalData', digitalData.product); 
+  $('<div>').html('product').appendTo($('body'));
+});
+
+$('#simple').on('click', function() { 
+  $(document).trigger(
+    'digitalData', 
+    {'skey': 'sval'}
+  ); 
+  $('<div>').html('simple').appendTo($('body'));
+});
+
+
+
+
+
