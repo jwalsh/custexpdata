@@ -1,41 +1,76 @@
-// TODO: Specify the type of these objects if not String 
-window.digitalData = { 
-  pageIDentifier: "", // 7.2: TODO: Change name: s/ID/Id/ 
+// Validation: Nomenclature should use upcase for abbrevs or acronyms
+// Types:
+// - Objects are fully defined
+// - Arrays are defined for a single instance
+// - Strings are defined as empty
+// - Numbers are defined as 0
+// - Date || String is new Date()
+// - ArrayString is [""]
+window.digitalData = {
+  pageInstanceID: "",
   page: {
-    pageID: "",
-    pageName: "",
-    pageCategory: { 
-      primaryCategory: "", // Reserved
+    pageInfo: {
+      pageID: "",
+      pageName: "",
+      destinationURL: document.location,
+      referringURL: document.referrer,
+      sysEnv: "",
+      variant: "",
+      version: "",
+      breadcrumbs: [""],
+      author: "",
+      issueDate: new Date(),
+      effectiveDate: new Date(),
+      expiryDate: new Date(),
+      language: "",
+      industryCodes: "",
+      publisher: ""
+    },
+    category: {
+      primaryCategory: "",
       subCategory1: "",
-      PageType: "" // TODO: s/Page/page/ for nomenclature
-     },
-    searchTerm: "",
-    searchResult: 0,
-    destinationURL: window.location.href,
-    referringUrl: document.referrer,
-    attributes: { // TODO: Drop init caps
-      SysEnv: "", // Is this a mobile site or page view? 
-      Variant: "",
-      Version: "1.2.3", // String?
-      Breadcrumbs: ""
-    },
+      pageType: ""
+    }
   },
-  product: { 
-    productID: { // Is this actually an ID if contains name
-      prodID: "",
-      productName: "", 
-      description: "", // Why not productDescription given name
-      productURL: "",
-      // Optional
-      manufacturer: "",
-      sku: "",
-      size: ""
-    },
-    productCategory: {},
-    linkedProducts: {},
-    attributes: {}
-  },
-  cart: { 
+  product: [
+    {
+      productInfo: {
+        productID: "",
+        productName: "",
+        description: "",
+        productURL: "",
+        productImage: "",
+        productThumbnail: "",
+        manufacturer: "",
+        sky: "",
+        color: "",
+        size: ""
+      },
+      category: {
+        primaryCategory: "",
+        subCategory1: "",
+        productType: ""
+      },
+      linkedProduct: [
+        {
+          productInfo: {
+            productID: "",
+            productName: "",
+            description: "",
+            productURL: "",
+            productImage: "",
+            productThumbnail: "",
+            manufacturer: "",
+            sku: "",
+            color: "",
+            size: ""
+          }
+        }
+      ]
+    }
+  ],
+
+  cart: {
     cartID: "",
     price: {},
     items: [
@@ -57,32 +92,36 @@ window.digitalData = {
       address: ""
     }
   },
-  event: {},
-  
-  component: {},
-  user: {},
-  version: {}
+  event: [],
+  component: [],
+  user: [],
+  privacyAccessCategories: {},
+  version: ""
 };
 
 console.log(digitalData);
 
 
-$('#user').on('click', function() { 
-  $(document).trigger('digitalData', digitalData.user); 
+$('#user').on('click', function() {
+  $(document).trigger('digitalData', digitalData.user);
   $('<div>').html('user').appendTo($('body'));
 });
 
-
-$('#product').on('click', function() { 
-  $(document).trigger('digitalData', digitalData.product); 
+$('#product').on('click', function() {
+  $(document).trigger('digitalData', digitalData.product);
   $('<div>').html('product').appendTo($('body'));
 });
 
-$('#simple').on('click', function() { 
+$('#product').on('click', function() {
+  $(document).trigger('digitalData', digitalData.product);
+  $('<div>').html('product').appendTo($('body'));
+});
+
+$('#simple').on('click', function() {
   $(document).trigger(
-    'digitalData', 
+    'digitalData',
     {'skey': 'sval'}
-  ); 
+  );
   $('<div>').html('simple').appendTo($('body'));
 });
 
