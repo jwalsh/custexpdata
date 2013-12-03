@@ -30,7 +30,8 @@ window.digitalData = {
       primaryCategory: "",
       subCategory1: "",
       pageType: ""
-    }
+    },
+    attributes: {}
   },
   product: [
     {
