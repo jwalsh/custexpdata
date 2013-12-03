@@ -73,19 +73,44 @@ window.digitalData = {
 
   cart: {
     cartID: "",
-    price: {},
-    items: [
+    price: {
+      basePrice: 0,
+      voucherCode: "",
+      voucherDiscount: 0,
+      currency: "", // ISO 4217
+      taxRate: 0,
+      shipping: 0,
+      shippingMethod: "",
+      priceWithTax: 0,
+      cartTotal: 0
+    },
+    attributes: {},
+    item: [
       {
-        productID: {}, // See above
-        productCategory: {},
+        productInfo: {
+          productID: "",
+          productName: "",
+          description: "",
+          productURL: "",
+          productImage: "",
+          productThumbnail: "",
+          manufacturer: "",
+          sky: "",
+          color: "",
+          size: ""
+        },
+        category: {},
         quantity: 0,
         price: {},
-        linkedProducts: {},
+        linkedProduct: [
+          {}
+        ],
+        productInfo: {},
         attributes: {}
       }
     ]
-
   },
+
   transaction: {
     transactionID: "",
     profileID: "",
